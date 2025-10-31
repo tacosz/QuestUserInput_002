@@ -1,6 +1,5 @@
 package com.example.pertemuan5pam
 
-import androidx.compose.animation.core.withInfiniteAnimationFrameMillis
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -59,7 +58,16 @@ fun FormDataDiri(modifier: Modifier)
                         })
                     Text(text = item)
                 }
-            } }
+            }
         }
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            modifier = Modifier.width(250.dp),
+            label = {Text(text = "Alamat Lengkap")},
+            onValueChange = {
+                textAlamat = it
+            }
+        )
     }
 }
