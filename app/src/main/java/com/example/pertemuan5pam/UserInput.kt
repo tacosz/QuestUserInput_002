@@ -42,4 +42,6 @@ fun FormRegistration (modifier: Modifier)
             modifier = Modifier.fillMaxSize()
         )
     }
+
+
 }
