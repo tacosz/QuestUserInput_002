@@ -23,5 +23,6 @@ fun FormRegistration (modifier: Modifier)
     var rw by remember { mutableStateOf(value = "") }
     var umur by remember { mutableStateOf(value = "") }
 
+    val gender by remember { mutableStateOf(value = "") }
 
 }
