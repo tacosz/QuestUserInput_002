@@ -4,10 +4,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -56,7 +59,7 @@ fun FormRegistration (modifier: Modifier)
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 80.dp, start = 40.dp, end = 40.dp, bottom = 30.dp)
+            .padding(top = 80.dp, start = 40.dp, end = 40.dp, bottom = 30.dp),
     ) {
         Text(
             text = stringResource(R.string.formregistration),
@@ -65,7 +68,22 @@ fun FormRegistration (modifier: Modifier)
             modifier = Modifier.padding(bottom = 16.dp)
         )
         Card(
-            modifier = Modifier.fillMaxSize()
-        ) {  }
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            OutlinedTextField(
+                value = textNama,
+                singleLine = true,
+                shape = MaterialTheme.shapes.large,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 30.dp, start = 15.dp, end = 15.dp),
+                label = {Text(text = "Nama Lengkap")},
+                onValueChange = {
+                    textNama = it
+                }
+            )
+
+        }
     }
 }
