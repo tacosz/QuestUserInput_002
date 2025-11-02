@@ -124,7 +124,7 @@ fun FormRegistration (modifier: Modifier) {
                     Text(text = "RT: $rt")
                     Text(text = "RW: $rw")
                     Text(text = "Umur: $umur")
-                    Text(text = "Jenis Kelamin: $gender")
+                    Text(text = "Jenis Kelamin: $jk")
                 }
             },
             confirmButton = {
