@@ -33,7 +33,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DatePicker
@@ -110,7 +112,31 @@ fun FormRegistration (modifier: Modifier) {
         }
     }
 
-    if ()
+    if (showSuccessDialog) {
+        AlertDialog(
+            onDismissRequest = {showSuccessDialog = false},
+            icon = {Icon(Icons.Default.Check, contentDescription = null)},
+            title = {Text(text = "Berhasil")},
+            text = {
+                Column {
+                    Text(text = "Nama: $nama")
+                    Text(text = "Asal: $asal")
+                    Text(text = "Tanggal Lahir: $tgl")
+                    Text(text = "RT: $rt")
+                    Text(text = "RW: $rw")
+                    Text(text = "Umur: $umur")
+                    Text(text = "Jenis Kelamin: $gender")
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showSuccessDialog = false
+                }) {
+                    Text("OK")
+                }
+            }
+        )
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
