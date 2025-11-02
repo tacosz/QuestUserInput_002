@@ -27,6 +27,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.icu.util.Calendar
+import androidx.compose.foundation.clickable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormRegistration (modifier: Modifier)
@@ -116,6 +122,26 @@ fun FormRegistration (modifier: Modifier)
                     .padding(bottom = 15.dp, start = 20.dp, end = 20.dp),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
+                OutlinedTextField(
+                    value = selectedDate,
+                    singleLine = true,
+                    shape = MaterialTheme.shapes.large,
+                    onValueChange = { },
+                    readOnly = true,
+                    label = {Text(text = "Tanggal Lahir")},
+                    trailingIcon = {
+                        IconButton(
+                            onClick = {showDatePicker = !showDatePicker}
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.DateRange,
+                                contentDescription = "Select Date"
+                            )
+                        }
+                    },
+                    modifier = Modifier.weight(1f)
+                        .clickable(enabled = true, onClick = {showDatePicker = true})
+                )
 
             }
         }
