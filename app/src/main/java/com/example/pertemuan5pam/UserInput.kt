@@ -36,9 +36,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -79,6 +82,35 @@ fun FormRegistration (modifier: Modifier) {
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
     val image = painterResource(R.drawable.bg)
+
+    if (showDatePicker) {
+        DatePickerDialog(
+            onDismissRequest = {showDatePicker = false},
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDatePicker = false
+                        datePickerState.selectedDateMillis?.let {
+                            textTgl = convertMillisToDate(it)
+                        }
+                    }
+                ) {
+                    Text(text = "Pilih")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {showDatePicker = false}
+                ) {
+                    Text(text = "Batal")
+                }
+            }
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
+
+    if ()
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
