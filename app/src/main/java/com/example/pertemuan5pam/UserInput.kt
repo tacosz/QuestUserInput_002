@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.icu.util.Calendar
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Icon
@@ -141,6 +142,18 @@ fun FormRegistration (modifier: Modifier)
                     },
                     modifier = Modifier.weight(1f)
                         .clickable(enabled = true, onClick = {showDatePicker = true})
+                )
+                OutlinedTextField(
+                    value = textRT,
+                    singleLine = true,
+                    shape = MaterialTheme.shapes.large,
+                    modifier = Modifier
+                        .width(60.dp)
+                        .padding(top = 7.dp),
+                    onValueChange = {
+                        textRT = it
+                    },
+                    label = {Text(text = "RT")}
                 )
 
             }
