@@ -211,18 +211,14 @@ fun FormRegistration (modifier: Modifier) {
                                 )
                             }
                         },
-                        modifier = Modifier.weight(1f)
-                            .fillMaxWidth()
-                            .padding(top = 12.dp)
-                            .clickable(enabled = true, onClick = { showDatePicker = true })
+                        modifier = Modifier.width(184.dp)
                     )
                     OutlinedTextField(
                         value = textRT,
                         singleLine = true,
-                        shape = MaterialTheme.shapes.large,
+                        shape = RoundedCornerShape(12.dp),
                         modifier = Modifier
-                            .width(60.dp)
-                            .padding(top = 12.dp),
+                            .width(60.dp),
                         onValueChange = {
                             textRT = it
                         },
@@ -235,26 +231,27 @@ fun FormRegistration (modifier: Modifier) {
                     OutlinedTextField(
                         value = textRW,
                         singleLine = true,
-                        shape = MaterialTheme.shapes.large,
+                        shape = RoundedCornerShape(12.dp),
                         modifier = Modifier
-                            .width(60.dp)
-                            .padding(top = 12.dp),
+                            .width(60.dp),
                         onValueChange = {
                             textRW = it
                         },
                         label = {
-                            Text(text = "RW")
+                            Text(text = "RW",
+                                fontSize = 14.sp)
                         }
                     )
                 }
                 OutlinedTextField(
                     value = textUmur,
                     singleLine = true,
-                    shape = MaterialTheme.shapes.large,
+                    shape = RoundedCornerShape(12.dp),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 15.dp, end = 15.dp),
-                    label = { Text(text = "Umur") },
+                    label = { Text(text = "Umur",
+                        fontSize = 14.sp)},
                     onValueChange = {
                         textUmur = it
                     }
