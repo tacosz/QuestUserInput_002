@@ -1,8 +1,10 @@
 package com.example.pertemuan5pam
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.icu.util.Calendar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormRegistration (modifier: Modifier)
@@ -33,7 +36,8 @@ fun FormRegistration (modifier: Modifier)
     var showDatePicker by remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState()
     val selectedDate = datePickerState.selectedDateMillis?.let {
-        val calendar.timeInMillis = it
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = it
         "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.YEAR)}"
     } ?: ""
 
@@ -50,6 +54,7 @@ fun FormRegistration (modifier: Modifier)
     var rt by remember { mutableStateOf(value = "") }
     var rw by remember { mutableStateOf(value = "") }
     var umur by remember { mutableStateOf(value = "") }
+    var submitted by remember { mutableStateOf(false) }
 
     val gender by remember { mutableStateOf(value = "") }
 
@@ -104,6 +109,15 @@ fun FormRegistration (modifier: Modifier)
                     textAsal = it
                 }
             )
+
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 15.dp, start = 20.dp, end = 20.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+
+            }
         }
     }
 }
