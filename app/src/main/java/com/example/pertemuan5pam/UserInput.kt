@@ -28,11 +28,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.icu.util.Calendar
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.VerticalDivider
+import androidx.compose.ui.res.dimensionResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -149,13 +152,29 @@ fun FormRegistration (modifier: Modifier)
                     shape = MaterialTheme.shapes.large,
                     modifier = Modifier
                         .width(60.dp)
-                        .padding(top = 7.dp),
+                        .padding(top = 12.dp),
                     onValueChange = {
                         textRT = it
                     },
                     label = {Text(text = "RT")}
                 )
-
+                VerticalDivider(
+                    thickness = dimensionResource(id = R.dimen.divider_tipis),
+                    modifier = Modifier.padding(top = 30.dp).height(40.dp)
+                )
+                OutlinedTextField(
+                    value = textRW,
+                    singleLine = true,
+                    shape = MaterialTheme.shapes.large,
+                    modifier = Modifier
+                        .width(60.dp)
+                        .padding(top = 12.dp),
+                    onValueChange = {
+                        textRW = it
+                    },
+                    label = {Text(text = "RW")
+                    }
+                )
             }
         }
     }
