@@ -26,8 +26,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import android.icu.util.Calendar
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -289,21 +287,22 @@ fun FormRegistration (modifier: Modifier) {
                 }
                 Spacer(Modifier.height(height = 80.dp).fillMaxWidth(1f))
                 Button(
-                    enabled = check,
+                    enabled = check && textNama.isNotEmpty() &&
+                    textAsal.isNotEmpty() && textRT.isNotEmpty() &&
+                    textRW.isNotEmpty() && textTgl.isNotEmpty(),
                     onClick = {
                         nama = textNama
                         asal = textAsal
-                        tgl = selectedDate
+                        tgl = textTgl
                         rt = textRT
                         rw = textRW
-                        jk = textJK
-                        submitted = !submitted
+                        umur = textUmur
+                        showSuccessDialog = true
                     },
                     modifier = Modifier.width(width = 150.dp).align(Alignment.CenterHorizontally)
                 ) {
                     Text(stringResource(R.string.submit))
                 }
-                Spacer(Modifier.height(height = 50.dp))
             }
         }
     }
