@@ -30,12 +30,14 @@ import android.icu.util.Calendar
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.input.KeyboardType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -144,6 +146,8 @@ fun FormRegistration (modifier: Modifier)
                         }
                     },
                     modifier = Modifier.weight(1f)
+                        .fillMaxWidth()
+                        .padding(top = 12.dp)
                         .clickable(enabled = true, onClick = {showDatePicker = true})
                 )
                 OutlinedTextField(
@@ -176,6 +180,18 @@ fun FormRegistration (modifier: Modifier)
                     }
                 )
             }
+            OutlinedTextField(
+                value = textUmur,
+                singleLine = true,
+                shape = MaterialTheme.shapes.large,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 15.dp, end = 15.dp),
+                label = {Text(text = "Umur")},
+                onValueChange = {
+                    textUmur = it
+                }
+            )
         }
     }
 }
