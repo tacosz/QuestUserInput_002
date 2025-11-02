@@ -28,17 +28,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.icu.util.Calendar
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.input.KeyboardType
 import kotlin.collections.forEach
@@ -217,7 +220,13 @@ fun FormRegistration (modifier: Modifier)
                     }
                 }
             }
-
+            Row (modifier = Modifier.padding(start = 40.dp, end = 40.dp)) {
+                Checkbox(checked = check, onCheckedChange = {check = it})
+                Text(stringResource(R.string.check),
+                    fontSize = 15.sp,
+                    color = Color.DarkGray)
+            }
+            Spacer(Modifier.height(height = 50.dp))
         }
     }
 }
