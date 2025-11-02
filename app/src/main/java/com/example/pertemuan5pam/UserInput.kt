@@ -188,7 +188,8 @@ fun FormRegistration (modifier: Modifier) {
 
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(start = 10.dp, end = 10.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -209,7 +210,7 @@ fun FormRegistration (modifier: Modifier) {
                                 )
                             }
                         },
-                        modifier = Modifier.width(184.dp)
+                        modifier = Modifier.width(160.dp)
                     )
                     OutlinedTextField(
                         value = textRT,
@@ -224,7 +225,7 @@ fun FormRegistration (modifier: Modifier) {
                     )
                     VerticalDivider(
                         thickness = dimensionResource(id = R.dimen.divider_tipis),
-                        modifier = Modifier.padding(top = 30.dp).height(40.dp)
+                        modifier = Modifier.padding().height(40.dp)
                     )
                     OutlinedTextField(
                         value = textRW,
@@ -270,8 +271,7 @@ fun FormRegistration (modifier: Modifier) {
                         ), verticalAlignment = Alignment.CenterVertically) {
                             RadioButton(
                                 selected = textJK == item,
-                                onClick = {
-                                    textJK = item
+                                onClick = { textJK = item
                                 })
                             Text(text = item)
                         }
@@ -297,6 +297,7 @@ fun FormRegistration (modifier: Modifier) {
                         rt = textRT
                         rw = textRW
                         umur = textUmur
+                        jk = textJK
                         showSuccessDialog = true
                     },
                     modifier = Modifier.width(width = 150.dp).align(Alignment.CenterHorizontally)
