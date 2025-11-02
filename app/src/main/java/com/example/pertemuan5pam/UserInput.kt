@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.DateRange
@@ -159,6 +160,7 @@ fun FormRegistration (modifier: Modifier) {
             Card(
                 modifier = Modifier
                     .fillMaxSize()
+                    .align(Alignment.CenterHorizontally)
             ) {
                 OutlinedTextField(
                     value = textNama,
@@ -188,24 +190,24 @@ fun FormRegistration (modifier: Modifier) {
 
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 15.dp, start = 20.dp, end = 20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OutlinedTextField(
-                        value = selectedDate,
-                        singleLine = true,
-                        shape = MaterialTheme.shapes.large,
+                        value = textTgl,
+                        shape = RoundedCornerShape(12.dp),
                         onValueChange = { },
                         readOnly = true,
-                        label = { Text(text = "Tanggal Lahir") },
+                        label = { Text(text = "Tanggal Lahir",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Medium) },
                         trailingIcon = {
                             IconButton(
-                                onClick = { showDatePicker = !showDatePicker }
+                                onClick = { showDatePicker = true}
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.DateRange,
-                                    contentDescription = "Select Date"
+                                    Icons.Default.DateRange, contentDescription = "Pilih Tanggal"
                                 )
                             }
                         },
