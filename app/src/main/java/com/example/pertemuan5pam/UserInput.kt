@@ -30,14 +30,18 @@ import android.icu.util.Calendar
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.VerticalDivider
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.input.KeyboardType
+import kotlin.collections.forEach
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,7 +72,7 @@ fun FormRegistration (modifier: Modifier)
     var umur by remember { mutableStateOf(value = "") }
     var submitted by remember { mutableStateOf(false) }
 
-    val gender by remember { mutableStateOf(value = "") }
+    val gender: List<String> = listOf("Laki-laki","Perempuan")
 
     val image = painterResource(R.drawable.bg)
 
@@ -192,6 +196,28 @@ fun FormRegistration (modifier: Modifier)
                     textUmur = it
                 }
             )
+            Text(stringResource(R.string.jk),
+                modifier = Modifier
+                    .align(Alignment.Start)
+                    .padding(start = 24.dp, top = 12.dp),
+                fontWeight = FontWeight.Bold
+            )
+            Row {
+                gender.forEach { item ->
+                    Row(modifier = Modifier.padding(start = 12.dp).selectable(
+                        selected = textJK == item,
+                        onClick = {textJK = item}
+                    ), verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = textJK == item,
+                            onClick = {
+                                textJK = item
+                            })
+                        Text(text = item)
+                    }
+                }
+            }
+
         }
     }
 }
