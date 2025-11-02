@@ -6,12 +6,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,13 +24,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormRegistration (modifier: Modifier)
 {
     var textNama by remember { mutableStateOf(value = "") }
     var textAsal by remember { mutableStateOf(value = "") }
-    var textTgl by remember { mutableStateOf(value = "") }
+    var showDatePicker by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    val selectedDate = datePickerState.selectedDateMillis?.let {
+        val calendar.timeInMillis = it
+        "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.YEAR)}"
+    } ?: ""
+
     var textRT by remember { mutableStateOf(value = "") }
     var textRW by remember { mutableStateOf(value = "") }
     var textUmur by remember { mutableStateOf(value = "") }
@@ -84,6 +90,18 @@ fun FormRegistration (modifier: Modifier)
                 }
             )
 
+            OutlinedTextField(
+                value = textAsal,
+                singleLine = true,
+                shape = MaterialTheme.shapes.large,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 15.dp, end = 15.dp),
+                label = {Text(text = "Kota Asal")},
+                onValueChange = {
+                    textAsal = it
+                }
+            )
         }
     }
 }
