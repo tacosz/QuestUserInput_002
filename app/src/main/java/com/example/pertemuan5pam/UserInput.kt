@@ -1,6 +1,5 @@
 package com.example.pertemuan5pam
 
-import android.icu.text.SimpleDateFormat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -50,7 +49,7 @@ import java.util.Date
 import java.util.Locale
 
 private fun convertMillisToDate(millis: Long): String {
-    val formatter = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     return formatter.format(Date(millis))
 }
 
@@ -59,22 +58,10 @@ private fun convertMillisToDate(millis: Long): String {
 fun FormRegistration (modifier: Modifier) {
     var textNama by remember { mutableStateOf(value = "") }
     var textAsal by remember { mutableStateOf(value = "") }
-    var showDatePicker by remember { mutableStateOf(false) }
-    val datePickerState = rememberDatePickerState()
-    val selectedDate = datePickerState.selectedDateMillis?.let {
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = it
-        "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${
-            calendar.get(
-                Calendar.YEAR
-            )
-        }"
-    } ?: ""
-
+    var textTgl by remember { mutableStateOf("") }
     var textRT by remember { mutableStateOf(value = "") }
     var textRW by remember { mutableStateOf(value = "") }
     var textUmur by remember { mutableStateOf(value = "") }
-    var showNumberPicker by remember { mutableStateOf(false) }
     var textJK by remember { mutableStateOf(value = "") }
     var check by remember { mutableStateOf(false) }
 
@@ -84,7 +71,9 @@ fun FormRegistration (modifier: Modifier) {
     var rt by remember { mutableStateOf(value = "") }
     var rw by remember { mutableStateOf(value = "") }
     var umur by remember { mutableStateOf(value = "") }
-    var submitted by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    var showSuccessDialog by remember { mutableStateOf(false) }
+    var showDatePicker by remember { mutableStateOf(false) }
     var jk by remember { mutableStateOf(value = "") }
 
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
