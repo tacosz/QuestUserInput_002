@@ -35,6 +35,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -74,6 +75,7 @@ fun FormRegistration (modifier: Modifier)
     var rw by remember { mutableStateOf(value = "") }
     var umur by remember { mutableStateOf(value = "") }
     var submitted by remember { mutableStateOf(false) }
+    var jk by remember { mutableStateOf(value = "") }
 
     val gender: List<String> = listOf("Laki-laki","Perempuan")
 
@@ -225,6 +227,20 @@ fun FormRegistration (modifier: Modifier)
                 Text(stringResource(R.string.check),
                     fontSize = 15.sp,
                     color = Color.DarkGray)
+            }
+            Spacer(Modifier.height(height = 80.dp).fillMaxWidth(1f))
+            Button(enabled = check,
+                onClick = {
+                    nama = textNama
+                    asal = textAsal
+                    tgl = selectedDate
+                    rt = textRT
+                    rw = textRW
+                    jk = textJK
+                    submitted = !submitted
+                },
+                modifier = Modifier.width(width = 150.dp).align(Alignment.CenterHorizontally)) {
+                Text(stringResource(R.string.submit))
             }
             Spacer(Modifier.height(height = 50.dp))
         }
