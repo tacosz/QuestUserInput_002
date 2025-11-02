@@ -2,4 +2,5 @@
     <string name="app_name">Pertemuan5PAM</string>
     <string name="submit">Submit</string>
     <string name="formregistration">Form Registration</string>
+    <string name="jk">Jenis Kelamin</string>
 </resources>
