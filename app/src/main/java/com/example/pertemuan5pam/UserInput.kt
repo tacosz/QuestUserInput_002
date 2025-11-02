@@ -40,7 +40,9 @@ fun FormRegistration (modifier: Modifier)
     var textRT by remember { mutableStateOf(value = "") }
     var textRW by remember { mutableStateOf(value = "") }
     var textUmur by remember { mutableStateOf(value = "") }
+    var showNumberPicker by remember { mutableStateOf(false) }
     var textJK by remember { mutableStateOf(value = "") }
+    var check by remember { mutableStateOf(false) }
 
     var nama by remember { mutableStateOf(value = "") }
     var asal by remember { mutableStateOf(value = "") }
